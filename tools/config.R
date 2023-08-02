@@ -371,14 +371,15 @@ use_configure <- function(package = ".") {
     resources <- system.file("resources", package = "configure")
 
     # copy into temporary directory
-    dir <- tempfile("configure-")
-    on.exit(unlink(dir, recursive = TRUE), add = TRUE)
+    ddd <- tempfile("configure-")
+    on.exit(unlink(ddd, recursive = TRUE), add = TRUE)
 
-    dir.create(dir)
-    file.copy(resources, dir, recursive = TRUE)
+    dir.create(ddd)
+    file.copy(resources, ddd, recursive = TRUE)
 
     # rename resources directory
-    setwd(dir)
+    print(ddd)
+    setwd(ddd)
     file.rename(basename(resources), basename(package))
 
     # now, copy these files back into the target directory
