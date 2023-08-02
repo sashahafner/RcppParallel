@@ -372,10 +372,10 @@ use_configure <- function(package = ".") {
 
     # copy into temporary directory
     dirx <- tempfile("configure-")
-    on.exit(unlink(dir, recursive = TRUE), add = TRUE)
+    on.exit(unlink(dirx, recursive = TRUE), add = TRUE)
 
     dir.create(dirx)
-    file.copy(resources, dir, recursive = TRUE)
+    file.copy(resources, dirx, recursive = TRUE)
 
     # rename resources directory
     setwd(dirx)
