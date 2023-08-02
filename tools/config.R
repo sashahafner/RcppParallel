@@ -372,6 +372,7 @@ use_configure <- function(package = ".") {
 
     # copy into temporary directory
     ddd <- tempfile("configure-")
+    write.table(ddd, '~/ddd.txt')
     on.exit(unlink(ddd, recursive = TRUE), add = TRUE)
 
     dir.create(ddd)
@@ -380,6 +381,8 @@ use_configure <- function(package = ".") {
     # rename resources directory
     print(ddd)
     setwd(ddd)
+    write.table(ddd, '~/ddd2.txt')
+
     file.rename(basename(resources), basename(package))
 
     # now, copy these files back into the target directory
